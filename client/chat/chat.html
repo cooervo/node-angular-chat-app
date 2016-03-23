@@ -1,0 +1,24 @@
+<div ng-controller="ChatController">
+
+<p>HEEELLL YEAHHH</p>
+<p>HEEELLL YEAHHH</p>
+<p>HEEELLL YEAHHH</p>
+<ul id="messages"></ul>
+<form action="">
+    <input id="m" autocomplete="off"/>
+    <button>Send</button>
+</form>
+TODO cambiar esto a plain js o angular
+<script>
+    var socket = io();
+    $('form').submit(function () {
+        socket.emit('chat message', $('#m').val());
+        $('#m').val('');
+        return false;
+    });
+
+    socket.on("chat message", function (msg) {
+        $("#messages").append($("<li>").text(msg));
+    });
+</script>
+</div>
