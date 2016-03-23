@@ -1,0 +1,65 @@
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    margin: 0;
+    background: rgb(237, 233, 228);
+    background-attachment: fixed;
+    color: #fff;
+    overflow: hidden;
+}
+
+.navbar {
+    color: #fff;
+    border-radius: 0px;
+    background-image: url("../images/nav-bar-bg.png");
+    background-size: cover;
+}
+
+
+.navbar-default {
+    border-bottom: 1px solid rgba(157, 153, 148, 0.4);
+}
+
+.nav.navbar-nav li a {
+    color: #fff;
+}
+
+.nav.navbar-nav li a:hover {
+    color: #fff;
+}
+
+.navbar-default .navbar-brand {
+    color: #fff;
+}
+
+.navbar-default .navbar-brand:hover {
+    color: #fff;
+}
+
+.navbar-header img {
+    width: 130px;
+    margin: 18px;
+}
+
+.navbar-fixed-bottom{
+    border-top: 1px solid rgba(157, 153, 148, 0.4);
+}
+
+#messages {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    color: #000;
+}
+
+#messages li {
+    padding: 5px 10px;
+}
+
+#messages li:nth-child(odd) {
+    background: #eee;
+}
+
