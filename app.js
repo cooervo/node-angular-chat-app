@@ -1,7 +1,7 @@
 'use strict';
 
-var express = require("express"); //TODO cambiar de express a hapi
-var app = require("express")(); //TODO cambiar de express a hapi
+var express = require("express");
+var app = require("express")();
 var http = require("http").Server(app);
 var io = require("socket.io")(http);
 
@@ -13,10 +13,12 @@ app.get("/", function (req, res) {
 
 app.use(express.static('./client'));
 
-
 io.on("connection", function (socket) {
     socket.on("chat message", function (msg) {
-        io.emit('chat message', msg);
+        console.log(msg)
+        //TODO hacer algo con el msg en el server side?
+
+        // TODO ejemplo para enviar al client: io.emit('chat message', msg);
     });
 });
 
