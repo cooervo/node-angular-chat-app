@@ -2,14 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>My App</title>
+    <title>nodechat</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="stylesheet" href="/styles/normalize.css" type="text/css">
-    <!-- Load jQuery & Bootstrap-->
-    <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+
     <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
     <!--Load custom styles-->
     <link rel="stylesheet" href="/styles/style.css" type="text/css">
@@ -47,8 +45,9 @@
 
 <div ng-view></div>
 
-
-
+<!-- Load jQuery & Bootstrap-->
+<script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 
 <script src="/socket.io/socket.io.js"></script>
 <script src="/bower_components/angular/angular.js"></script>
@@ -56,7 +55,7 @@
 
 <!--angular custom scripts-->
 <script src="/app.js"></script>
-<script src="/chat/chatController.js"></script>
+<script src="/chat/chat.controller.js"></script>
 
 </body>
 </html>

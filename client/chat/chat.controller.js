@@ -1,8 +1,8 @@
 'use strict';
 
-var myApp = angular.module("app");
+angular.module("app").
+    controller("ChatController", ["$scope", "$http", "$location", "$routeParams", function ($scope, $http, $location, $routeParams) {
 
-myApp.controller("ChatController", ["$scope", "$http", "$location", "$routeParams", function ($scope, $http, $location, $routeParams) {
 
     $scope.getBooks = function () {
         $http.get("/api/books").success(function (response) {
@@ -21,7 +21,7 @@ myApp.controller("ChatController", ["$scope", "$http", "$location", "$routeParam
 
     $scope.addBook = function () {
         $http.post("/api/books/", $scope.book).success(function (response) {
-            window.location.href="#/books";
+            window.location.href = "#/books";
         });
     };
 
@@ -29,13 +29,13 @@ myApp.controller("ChatController", ["$scope", "$http", "$location", "$routeParam
         //get parameter id from url route
         var id = $routeParams.id;
         $http.put("/api/books/" + id, $scope.book).success(function (response) {
-            window.location.href="#/books";
+            window.location.href = "#/books";
         });
     };
 
     $scope.deleteBook = function (bookId) {
         $http.delete("/api/books/" + bookId).success(function (response) {
-            window.location.href="#/books";
+            window.location.href = "#/books";
         });
     };
 
