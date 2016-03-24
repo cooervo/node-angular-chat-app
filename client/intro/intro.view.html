@@ -1,0 +1,9 @@
+<div ng-controller="introController as introCtrl">
+    <form class="panel">
+        <input ng-model="introCtrl.inputName" placeholder="Username" autocomplete="off" name="input" id="m"
+               class="form-control input-sm"/>
+        <span class="input-group-btn">
+            <button ng-click="introCtrl.submit()" class="btn btn-warning btn-sm">Submit</button>
+        </span>
+    </form>
+</div>

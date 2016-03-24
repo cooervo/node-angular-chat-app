@@ -1,42 +1,44 @@
-'use strict';
+"use strict";
 
-angular.module("app").
-    controller("ChatController", ["$scope", "$http", "$location", "$routeParams", function ($scope, $http, $location, $routeParams) {
+angular.module("app")
+    .controller("chatController", [
+        'userService',
+        function (userService) {
+
+            var socketIo = io.connect("http://localhost:3000"); //TODO create var for localhost
+
+            var ctrl = this;
+            ctrl.messages = [];
+
+            ctrl.userName = userService.name;
+
+            ctrl.isMsgValid = function () {
+                //TODO: protect against inyections & Hacks
+
+                if (ctrl.inputMessage) {
+                    return true;
+                }
+
+                return false;
+            };
+
+            /**
+             * Submits the message to server
+             */
+            ctrl.submit = function () {
+
+                if (ctrl.isMsgValid()) {
+                    //Emit to server with socketIo
+                    socketIo.emit("chat message", ctrl.inputMessage);
+
+                    // append to <ul> of #messages
+                    ctrl.messages.push(ctrl.inputMessage);
+                    // clear from input
+                    ctrl.inputMessage = null;
+
+                    //TODO re focus on input
+                }
+            };
 
 
-    $scope.getBooks = function () {
-        $http.get("/api/books").success(function (response) {
-            $scope.books = response;
-        });
-    };
-
-    $scope.getBook = function () {
-        //get parameter id from url route
-        var id = $routeParams.id;
-
-        $http.get("/api/books/" + id).success(function (response) {
-            $scope.book = response;
-        });
-    };
-
-    $scope.addBook = function () {
-        $http.post("/api/books/", $scope.book).success(function (response) {
-            window.location.href = "#/books";
-        });
-    };
-
-    $scope.updateBook = function () {
-        //get parameter id from url route
-        var id = $routeParams.id;
-        $http.put("/api/books/" + id, $scope.book).success(function (response) {
-            window.location.href = "#/books";
-        });
-    };
-
-    $scope.deleteBook = function (bookId) {
-        $http.delete("/api/books/" + bookId).success(function (response) {
-            window.location.href = "#/books";
-        });
-    };
-
-}]);
+        }]);
