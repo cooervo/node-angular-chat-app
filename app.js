@@ -14,14 +14,21 @@ app.get("/", function (req, res) {
 app.use(express.static('./client'));
 
 io.on("connection", function (socket) {
-    socket.on("chat message", function (msg) {
+
+    socket.on("chat_message", function (msg) {
         console.log(msg)
+
+        socket.broadcast.emit('update_clients', msg);
+
+
         //TODO hacer algo con el msg en el server side?
 
         // TODO ejemplo para enviar al client: io.emit('chat message', msg);
     });
 });
 
-http.listen(3000, function () {
-    console.log("listening on port: 3000");
+var portNum = 3001;
+
+http.listen(portNum, function () {
+    console.log("listening on port: " + portNum);
 });
