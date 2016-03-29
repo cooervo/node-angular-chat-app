@@ -1,8 +1,9 @@
 'use strict';
 
 var express = require("express");
-var app = require("express")();
-var http = require("http").Server(app);
+var app = express();
+var http = require("http");
+var server = http.createServer(app);
 var io = require("socket.io")(http);
 
 //use environment var PORT or 3001
@@ -27,6 +28,6 @@ io.on("connection", function (socket) {
 });
 
 
-http.listen(portNum, function () {
+server.listen(portNum, function () {
     console.log("listening on port: " + portNum);
 });
