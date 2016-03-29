@@ -14,7 +14,7 @@ angular.module("app")
 
             ctrl.submit = function () {
 
-                ctrl.socketIo.emit("chatMsg", {userName: userService.name, msg: ctrl.inputMessage});
+                ctrl.socketIo.emit("chatMsg", {name: userService.name, msg: ctrl.inputMessage});
 
                 ctrl.inputMessage = null;
             };
@@ -22,11 +22,7 @@ angular.module("app")
 
             ctrl.socketIo.on("updateClients", function (userMsg) {
 
-                ctrl.userMsg = userMsg;
-
-                ctrl.userName = userMsg.userName;
-
-                ctrl.messages.push(userMsg.msg);
+                ctrl.messages.push(userMsg);
 
                 //apply changes to angular
                 $scope.$apply();

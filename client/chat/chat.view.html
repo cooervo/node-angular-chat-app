@@ -1,9 +1,9 @@
 <div ng-controller="chatController as chatCtrl">
     <ul id="messages">
-        <li ng-repeat="msg in chatCtrl.messages track by $index">
-            <p id="username">{{chatCtrl.userMsg.userName}}</p>
+        <li ng-repeat="userMsg in chatCtrl.messages track by $index">
+            <p id="username">{{userMsg.name}}</p>
 
-            <p>{{ msg }}</p>
+            <p>{{ userMsg.msg }}</p>
         </li>
     </ul>
 

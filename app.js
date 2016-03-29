@@ -20,8 +20,6 @@ io.on("connection", function (socket) {
 
     socket.on("chatMsg", function (userMsg) {
 
-        console.log("chatMsg " + userMsg.userName + " " + userMsg.msg);
-
         io.emit('updateClients', userMsg);
 
     });
