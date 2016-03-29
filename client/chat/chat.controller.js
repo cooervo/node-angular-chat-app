@@ -7,10 +7,8 @@ angular.module("app")
 
             var ctrl = this;
             ctrl.messages = [];
-
             ctrl.socketIo = io();
-            ctrl.userName = userService.name;
-            ctrl.userMsg = userService.name;
+
 
             ctrl.submit = function () {
 
