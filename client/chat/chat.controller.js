@@ -23,6 +23,9 @@ angular.module("app")
             ctrl.socketIo.on("updateClients", function (userMsg) {
 
                 ctrl.userMsg = userMsg;
+
+                ctrl.userName = userMsg.userName;
+
                 ctrl.messages.push(userMsg.msg);
 
                 //apply changes to angular
