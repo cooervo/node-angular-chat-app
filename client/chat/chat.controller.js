@@ -5,7 +5,6 @@ angular.module("app")
         'userService',
         function (userService) {
 
-
             var ctrl = this;
             ctrl.messages = [];
 
