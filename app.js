@@ -22,12 +22,7 @@ io.on("connection", function (socket) {
     socket.on("chat_message", function (msg) {
 
         socket.broadcast.emit('update_clients', msg);
-	io.sockets.emit("update_clients", msg);	
 
-        console.log("NODE chat_message " + msg)
-        //TODO hacer algo con el msg en el server side?
-
-        // TODO ejemplo para enviar al client: io.emit('chat message', msg);
     });
 });
 
