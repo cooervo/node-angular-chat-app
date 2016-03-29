@@ -5,11 +5,11 @@ angular.module("app")
         'userService',
         function (userService) {
 
-            var socketIo = io.connect("http://localhost:3000"); //TODO create var for localhost
 
             var ctrl = this;
             ctrl.messages = [];
 
+            ctrl.socketIo = io.connect("http://localhost:3001"); //TODO create var for localhost
             ctrl.userName = userService.name;
 
             ctrl.isMsgValid = function () {
@@ -27,27 +27,29 @@ angular.module("app")
 
                 if (ctrl.isMsgValid()) {
                     //Emit to server with socketIo
-                    socketIo.emit("chat_message", ctrl.inputMessage);
+                    ctrl.socketIo.emit("chat_message", ctrl.inputMessage);
 
-                    // append to <ul> of #messages
-                    ctrl.messages.push(ctrl.inputMessage);
-
-                    // clear from input
-                    ctrl.inputMessage = null;
 
                     //TODO re focus on input
+
+
+                    ctrl.messages.push(ctrl.inputMessage);
+                    console.log("ANGULAR chat_message " + ctrl.inputMessage)
                 }
+
+
+                ctrl.inputMessage = null;
             };
 
 
-            socketIo.on("update_clients", function (msg) {
-                console.log("update_clients " + msg);
+            ctrl.socketIo.on("update_clients", function (msg) {
 
-                // append to <ul> of #messages
+                // add to array and ng-repeat updates the list of messages
+
                 ctrl.messages.push(msg);
+                console.log("ANGULAR update_clients " + msg)
 
-                // clear from input
-                ctrl.inputMessage = null;
+
             });
 
 
