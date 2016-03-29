@@ -9,7 +9,7 @@ angular.module("app")
             var ctrl = this;
             ctrl.messages = [];
 
-            ctrl.socketIo = io.connect("http://localhost:3001"); //TODO create var for localhost
+            ctrl.socketIo = io.connect(); //TODO create var for localhost
             ctrl.userName = userService.name;
 
             ctrl.isMsgValid = function () {
