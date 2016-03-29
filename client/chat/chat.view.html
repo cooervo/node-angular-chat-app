@@ -1,13 +1,15 @@
 <div ng-controller="chatController as chatCtrl">
     <ul id="messages">
         <li ng-repeat="msg in chatCtrl.messages track by $index">
-            <p id="username">{{chatCtrl.userName}} x</p><p>{{ msg }}</p>
+            <p id="username">{{chatCtrl.userMsg.userName}}</p>
+
+            <p>{{ msg }}</p>
         </li>
     </ul>
 
     <form class="panel-footer navbar-fixed-bottom">
         <div class="input-group">
-            <input  ng-model="chatCtrl.inputMessage" autocomplete="off" name="input" id="m"class="form-control input-sm" />
+            <input  ng-model="chatCtrl.inputMessage" autocomplete="off" name="input" class="form-control input-sm" />
             <span class="input-group-btn">
                   <button ng-click="chatCtrl.submit()" class="btn btn-warning btn-sm">Submit</button>
             </span>
