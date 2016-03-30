@@ -1,5 +1,5 @@
 .idea
-node_modules/**
-node_modules/
+server/node_modules/**
+server/node_modules/
 client/bower_components/**
 client/bower_components/

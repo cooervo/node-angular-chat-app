@@ -1,10 +1,10 @@
 'use strict';
 
-var express = require("express");
-var app = express();
-var http = require("http");
-var server = http.createServer(app);
-var io = require("socket.io")(server);
+var express = require("express"),
+    app = express(),
+    http = require("http"),
+    server = http.createServer(app),
+    io = require("socket.io")(server);
 
 //use environment var PORT or 3001
 var portNum = 3001;
