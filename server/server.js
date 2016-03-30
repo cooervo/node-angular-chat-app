@@ -11,10 +11,10 @@ var portNum = 3001;
 
 //route handler
 app.get("/", function (req, res) {
-    res.sendFile("./index.html", {root: "./client/"});
+    res.sendFile("index.html", {root: "../client/"});
 });
 
-app.use(express.static('./client'));
+app.use(express.static('./../client'));
 
 io.on("connection", function (socket) {
 
